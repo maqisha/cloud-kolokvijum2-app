@@ -1,0 +1,23 @@
+.app-container {
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    form {
+        margin: 3rem;
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+
+        textarea {
+            height: 100px;
+        }
+    }
+
+    .response {
+        white-space: pre;
+        padding: 3rem;
+    }
+}
