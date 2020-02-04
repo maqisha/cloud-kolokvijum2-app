@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AppService } from './app.service';
 import { Subscription } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,8 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy{
   isLoading: boolean = false;
   method: string = "get";
-  private response: Object = null;
-  private appServiceSubscription: Subscription;
+  response: Object = null;
+  appServiceSubscription: Subscription;
   constructor(private appService: AppService) {}
 
   ngOnInit() {
@@ -21,7 +22,7 @@ export class AppComponent implements OnInit, OnDestroy{
     this.appServiceSubscription.unsubscribe();
   }
 
-  private tabChanged(event): void {
+  tabChanged(event): void {
     switch(event.index){
       case 0:
         this.method = "get";
@@ -39,7 +40,7 @@ export class AppComponent implements OnInit, OnDestroy{
     this.response = null;
   }
 
-  private onSend(form: HTMLFormElement, type: HTMLSelectElement, school: HTMLSelectElement, id: HTMLInputElement, body: HTMLTextAreaElement): void {
+  onSend(form: NgForm, type: HTMLSelectElement, school: HTMLSelectElement, id: HTMLInputElement, body: HTMLTextAreaElement): void {
     this.response = null;
     this.isLoading = true;
     this.appServiceSubscription = this.appService.subject.subscribe(response=>{
