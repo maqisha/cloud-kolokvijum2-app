@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AppService } from './app.service';
 import { Subscription } from 'rxjs';
 import { NgForm } from '@angular/forms';
+import { MatSelect } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -40,7 +41,7 @@ export class AppComponent implements OnInit, OnDestroy{
     this.response = null;
   }
 
-  onSend(form: NgForm, type: HTMLSelectElement, school: HTMLSelectElement, id: HTMLInputElement, body: HTMLTextAreaElement): void {
+  onSend(form: NgForm, type: MatSelect, school: MatSelect, id: HTMLInputElement, body: HTMLTextAreaElement): void {
     this.response = null;
     this.isLoading = true;
     this.appServiceSubscription = this.appService.subject.subscribe(response=>{
